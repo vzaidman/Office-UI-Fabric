@@ -189,6 +189,82 @@
 	}
 }
 
+//== Modifier: Hero button
+//
+.ms-Button.ms-Button--wire {
+	background-color: transparent;
+	border: 1px solid @ms-color-themePrimary;
+	vertical-align: top;
+	padding: 8px;
+
+	.ms-Button-icon {
+		color: @ms-color-themePrimary;
+		display: inline-block;
+		font-size: @ms-font-size-s;
+		position: relative;
+		top: 6px;
+		width: 20px;
+		height: 20px;
+		top: -4px;
+    	left: -2px;
+
+		.ms-Icon {
+			border-width: 2px;
+			height: 18px;
+			line-height: 18px;
+			width: 18px;
+			font-size: @ms-font-size-s;
+			margin: 0;
+		}
+	}
+
+	.ms-Button-label {
+		color: @ms-color-themePrimary;
+		font-family: @ms-font-family-light;
+		font-size: @ms-font-size-s;
+		position: relative;
+		top: -5px;
+	}
+
+	&:hover, 
+	&:focus {
+		.ms-Button-icon {
+			.ms-Icon {
+				color: @ms-color-themeDark;
+			}
+		}
+
+		.ms-Button-label {
+			color: @ms-color-themeDarker;
+		}
+	}
+
+	&:active {
+		.ms-Button-icon {
+			.ms-Icon {
+				color: @ms-color-themePrimary;
+			}
+		}
+
+		.ms-Button-label {
+			color: @ms-color-themePrimary;
+		}
+	}
+
+	&:disabled, 
+	&.is-disabled {
+		.ms-Button-icon {
+			.ms-Icon {
+				color: @ms-color-neutralTertiaryAlt;
+			}
+		}
+
+		.ms-Button-label {
+			color: @ms-color-neutralTertiary;
+		}
+	}
+}
+
 
 //== Modifier: Compound button
 //

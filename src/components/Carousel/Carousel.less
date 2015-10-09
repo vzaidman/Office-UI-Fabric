@@ -1,0 +1,135 @@
+// Copyright (c) Microsoft. All rights reserved. Licensed under the MIT license. See LICENSE in the project root for license information.
+
+//
+// Office UI Fabric
+// --------------------------------------------------
+// Carousel styles
+
+@ms-Carousel-height: 446px;
+@ms-Carousel-slideOneColor: #62BC66;
+@ms-Carousel-slideLargeWidth: 955px;
+@ms-Carousel-controls-height: 50px;
+@ms-Carousel-arrowLgWidth: 58px;
+@ms-Carousel-arrowFontSize: 48px;
+@ms-Carousel-paginationButtonSize: 10px;
+
+.ms-Carousel {
+  width: 100%;
+  height: @ms-Carousel-height;
+  position: relative;
+  background-color: @ms-Carousel-slideOneColor;
+  float: left;
+}
+
+.ms-Carousel-slide {
+	position: absolute;
+	left: 50%;
+	top: 0;
+	width: 955px;
+	height: @ms-Carousel-height;
+	overflow: hidden;
+}
+
+.ms-Carousel-innerSlide {
+	float: left;
+	position: relative;
+	height: auto;
+	width: 100%;
+}
+
+.ms-Carousel-content {
+	height: 208px;
+	max-width: 440px;
+	position: absolute;
+	top: 168px;
+}
+
+.ms-Carousel-slideTitle {
+	.ms-font-xxl;
+	color: @ms-color-white;
+	margin-bottom: 8px;
+}
+
+.ms-Carousel-slideSubTitle {
+	.ms-font-l;
+	line-height: @ms-font-size-xxl;
+	color: @ms-color-white;
+}
+
+.ms-Carousel-mainImage {
+	position: absolute;
+	right: 0;
+	top: 0;
+	height: auto;
+	width: auto;
+}
+
+.ms-Carousel-staticContent {
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: auto;
+	max-width: @ms-Carousel-height;
+	height: 173px;
+	padding-top: 44px;
+}
+
+.ms-Carousel-controls {
+	position: absolute;
+	margin: auto;
+	width: @ms-Carousel-slideLargeWidth;
+	left: 50%;
+	margin-left: -(@ms-Carousel-slideLargeWidth/2);
+	height: 50px;
+	overflow: hidden;
+	bottom: 0;
+	box-sizing: border-box;
+}
+
+.ms-Carousel-pagination {
+	height: @ms-Carousel-controls-height;
+	width: auto;
+	position: absolute;
+	left: 50%;
+	magin-left: -10px;
+	height: 10px;
+	top: 50%;
+	margin-top: -(@ms-Carousel-paginationButtonSize/2);
+}
+
+.ms-Carousel-paginationButton {
+	color: @ms-color-white;
+	height: @ms-Carousel-paginationButtonSize;
+	font-size: @ms-Carousel-paginationButtonSize;
+}
+
+.ms-Carousel-leftArrow,
+.ms-Carousel-rightArrow {
+	position: absolute;
+	height: @ms-Carousel-controls-height;
+	width: @ms-Carousel-arrowLgWidth;
+	font-size: 48px;
+	color: @ms-color-white;
+}
+
+.ms-Carousel-leftArrow:before,
+.ms-Carousel-rightArrow:before {
+	position: absolute;
+	top: 50%;
+	margin-top: -(@ms-Carousel-arrowFontSize/2);
+	left: 50%;
+	margin-left: -(@ms-Carousel-arrowFontSize/2);
+}
+
+.ms-Carousel-leftArrow:hover,
+.ms-Carousel-rightArrow:hover {
+	cursor: pointer;
+}
+
+.ms-Carousel-leftArrow {
+	left: 0;
+}
+
+.ms-Carousel-rightArrow {
+	right: 0;
+}
