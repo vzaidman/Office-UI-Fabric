@@ -26,6 +26,7 @@
         		// Make sure slides exist
 	        	if($slides.length > 0) {
 
+	        		// Go through each slide
 	        		$slides.each(function( sIndex ) {
 	        			var $currentSlide = $(this);
 	        			var $paginationButtonClone = $paginationButton.clone();
@@ -69,18 +70,6 @@
 	        	var pSlide;
 	        	var slideMarginLeft = $slideWidth / 2;
 
-	        	if(currentSlide + 1 > $slides.length) {
-	        		nSlide = 0;
-	        	} else {
-	        		nSlide = currentSlide + 1;
-	        	}
-	        	
-	        	if(currentSlide - 1 < $slides.length) {
-	        		pSlide = 0;
-	        	} else {
-	        		pSlide = currentSlide - 1;
-	        	}
-
 	        	// Calculate left position
 	        	var parentCenterWidth = $thisCarousel.width() / 2;
 	        	var slideCenterWidth = $slideWidth / 2;
@@ -88,14 +77,30 @@
 	        	var pSlideLeftPos = cSlideLeftPos - $slideWidth;
 	        	var nSlideLeftPos = cSlideLeftPos + $slideWidth;
 
+	        	if(currentSlide + 1 > $slides.length) {
+	        		nSlide = 0;
+	        	} else {
+	        		nSlide = currentSlide + 1;
+	        	}
+	        	
+	        	if(currentSlide - 1 < $slides.length) {
+	        		pSlide = $slides.length;
+	        	} else {
+	        		pSlide = currentSlide - 1;
+	        	}
+
 	        	//Show current slide
 	        	$slides.eq(currentSlide).show().css({
 	        		"left": cSlideLeftPos
 	        	});
 
+	        	if($slides.length > 2) {
+	        		
+	        	}
+
 	        	$slides.eq(pSlide).css({
 	        		"left": pSlideLeftPos
-	        	})
+	        	});
 	        	
 	        	// Position previous slide
 	        	$slides.eq(nslide).css({
