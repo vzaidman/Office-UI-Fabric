@@ -104,10 +104,15 @@
 	        		if ((currentSlideNum + 1) > $slides.length ) {
 	        			animateAllSlides("right");
 	        			setCurrentSlide(0);
+	        		
 	        		} else {
 	        			animateAllSlides("right");
 	        			setCurrentSlide(currentSlideNum + 1);
 	        		}
+
+	        		settupPrevNextSlides();
+	        		positionNextSlide();
+	        		clearSlideStyles(prevSlideNum);
 
 	        	} else if(directionAction == "previous") {
 	        		
@@ -119,46 +124,59 @@
 	        			animateAllSlides("left");
 	        			setCurrentSlide(currentSlideNum - 1);
 	        		}
-	        		
+
+	        		settupPrevNextSlides();
+	        		clearSlideStyles(nextSlideNum);
+	        		positionNextSlide();
+	        	
 	        	}
 
-	        	settupPrevNextSlides();
+	        	
 
 	        }
 
 	        // Animation Functions
 	        function animateAllSlides(direction) {
+	        	
 	        	if(direction == "right") {
 
 	        		// Animate Current Slide
+	        		$slides.eq(currentSlideNum).stop();
 	        		$slides.eq(currentSlideNum).animate({
 	        			"left": pSlideLeftPos
+	        		}, 1000, function() {
+	        			// Afterwards reset the previous slides styles
+        				
+        				
 	        		});
 
 	        		// Animate Next Slide
+	        		$slides.eq(nextSlideNum).stop();
 	        		$slides.eq(nextSlideNum).show().animate({
 	        			"left": cSlideLeftPos
+	        		}, 1000, function() {
+
 	        		});
-
-	        		// Afterwards reset the previous slides styles
-	        		clearSlideStyles(prevSlideNum);
-
 
 	        	} else if(direction == "left") {
 
 	        		// Animate Current Slide
+	        		$slides.eq(currentSlideNum).stop();
 	        		$slides.eq(currentSlideNum).animate({
 	        			"left": nSlideLeftPos
+	        		}, 1000, function() {
+	        			// Afterwards reset the previous slides styles
+	        			
 	        		});
 
 	        		// Animate Next Slide
+	        		$slides.eq(prevSlideNum).stop();
 	        		$slides.eq(prevSlideNum).show().animate({
 	        			"left": cSlideLeftPos
+	        		}, 1000, function() {
+
 	        		});
-
-	        		// Afterwards reset the previous slides styles
-	        		clearSlideStyles(nextSlideNum);
-
+	        		
 	        	}
 	        }
 
@@ -189,14 +207,14 @@
 
 	        function positionNextSlide() {
 	     		// Show Next Slide
-        		$slides.eq(prevSlideNum).css({
+        		$slides.eq(nextSlideNum).css({
 	        		"left": pSlideLeftPos
 	        	});
 	        }
 
 	       	function positionPrevSlide() {
 	       		// Position previous slide
-	        	$slides.eq(nextSlideNum).css({
+	        	$slides.eq(prevSlideNum).css({
 	        		"left": nSlideLeftPos
 	        	});
 	       	}
@@ -209,8 +227,8 @@
 
 	       	// Clear positions
 	       	function clearSlideStyles(slideNumber) {
-	       		$slides.eq(slideNumber).removeAttr('style');
-	       		$slides.eq(slideNumber).hide();
+	       		$slides.eq(slideNumber).removeAttr('style').hide();
+	       		// $slides.eq(slideNumber).hide();
 	       	}
 
 	        function calcSlidePositions(currentSlide) {
