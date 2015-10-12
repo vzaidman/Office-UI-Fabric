@@ -101,7 +101,7 @@
 	        	if(directionAction == "next") {
 
 	        		// If the next slide doesn't exist
-	        		if ((currentSlideNum + 1) > $slides.length ) {
+	        		if ((currentSlideNum + 1) > ($slides.length - 1)) {
 	        			animateAllSlides("right");
 	        			setCurrentSlide(0);
 	        		
@@ -112,26 +112,22 @@
 
 	        		settupPrevNextSlides();
 	        		positionNextSlide();
-	        		clearSlideStyles(prevSlideNum);
 
 	        	} else if(directionAction == "previous") {
 	        		
 	        		
-	        		if((currentSlideNum - 1) < $slides.length) {
+	        		if((currentSlideNum - 1) < 0) {
 	        			animateAllSlides("left");
-	        			setCurrentSlide($slides.length);
+	        			setCurrentSlide($slides.length - 1);
 	        		} else {
 	        			animateAllSlides("left");
 	        			setCurrentSlide(currentSlideNum - 1);
 	        		}
 
 	        		settupPrevNextSlides();
-	        		clearSlideStyles(nextSlideNum);
 	        		positionNextSlide();
 	        	
 	        	}
-
-	        	
 
 	        }
 
@@ -146,8 +142,7 @@
 	        			"left": pSlideLeftPos
 	        		}, 1000, function() {
 	        			// Afterwards reset the previous slides styles
-        				
-        				
+        				clearSlideStyles(prevSlideNum);
 	        		});
 
 	        		// Animate Next Slide
@@ -166,7 +161,7 @@
 	        			"left": nSlideLeftPos
 	        		}, 1000, function() {
 	        			// Afterwards reset the previous slides styles
-	        			
+	        			clearSlideStyles(nextSlideNum);
 	        		});
 
 	        		// Animate Next Slide
@@ -174,7 +169,6 @@
 	        		$slides.eq(prevSlideNum).show().animate({
 	        			"left": cSlideLeftPos
 	        		}, 1000, function() {
-
 	        		});
 	        		
 	        	}
@@ -208,14 +202,14 @@
 	        function positionNextSlide() {
 	     		// Show Next Slide
         		$slides.eq(nextSlideNum).css({
-	        		"left": pSlideLeftPos
+	        		"left": nSlideLeftPos
 	        	});
 	        }
 
 	       	function positionPrevSlide() {
 	       		// Position previous slide
 	        	$slides.eq(prevSlideNum).css({
-	        		"left": nSlideLeftPos
+	        		"left": pSlideLeftPos
 	        	});
 	       	}
 
@@ -250,15 +244,15 @@
 	        function settupPrevNextSlides() {
 
 	        	// Setup The Next Slide Index
-        		if(currentSlideNum + 1 > $slides.length) {
+        		if(currentSlideNum + 1 > ($slides.length - 1)) {
 	        		nextSlideNum = 0;
 	        	} else {
 	        		nextSlideNum = currentSlideNum + 1;
 	        	}
 	        	
 	        	// Setup the Previous Slide Index
-	        	if(currentSlideNum - 1 < $slides.length) {
-	        		prevSlideNum = $slides.length;
+	        	if(currentSlideNum - 1 < 0) {
+	        		prevSlideNum = ($slides.length - 1);
 	        	} else {
 	        		prevSlideNum = currentSlideNum - 1;
 	        	}
