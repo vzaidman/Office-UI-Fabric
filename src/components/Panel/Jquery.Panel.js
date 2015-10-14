@@ -14,8 +14,8 @@
     /** Go through each panel we've been given. */
     return this.each(function () {
 
-      var $panel = $(this);
-      var $panelMain = $panel.find(".ms-Panel-main");
+      var $pan = $(this);
+      var $panMain = $panel.find(".ms-Panel-main");
 
       /** Hook to open the panel. */
       $(".js-togglePanel").on("click", function() {
