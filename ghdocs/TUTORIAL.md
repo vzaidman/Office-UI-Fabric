@@ -75,9 +75,9 @@ At this point, your directory should look like this:
 ```
 todo/
 |-- css/
-  |--fabric.css
-  |--fabric.components.css
   |--app.css
+  |--fabric.components.css
+  |--fabric.css
 |--index.html
 ```
 
@@ -116,7 +116,7 @@ Now let's add styles for these elements. Open up app.css and add two CSS rules: 
 
 ```css
 .TodoBar {
-  position: fixed; /* This bar should always be fixed to the top */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
@@ -172,7 +172,7 @@ dist/components/Button/Button.html
 dist/components/TextField/TextField.html
 ```
 
-First, copy all the contents from TextField.html and paste it into the first `.ms-Grid-col ` `<div>`, then remove the `<label>` element. The HTML should look now like this:
+First, copy all the contents from TextField.html and paste it into the first `.ms-Grid-col ` `<div>`, then remove the `<label>` and the `<span>` elements. The HTML should look now like this:
 
 ```html
 <div class="ms-Grid-col ms-u-sm6 ms-u-md8 ms-u-lg10">
@@ -182,7 +182,7 @@ First, copy all the contents from TextField.html and paste it into the first `.m
 </div>
 ```
 
-NOTE: We are removing the `<label>` element because we don't need it in this example. Fabric components can be customized fairly easily.
+NOTE: We are removing the `<label>` and `<span>` elements because we don't need them in this example. Fabric components can be customized fairly easily.
 
 Copy all the contents from Button.html and paste it into our second column. Let's tweak the text as well by changing **Create account** to **Add Todo** and changing the description to say **Add a todo task to the list**. After all that, it should look like the following:
 
@@ -277,24 +277,19 @@ Now, let's remove the background colors we used to test our two container `<divs
   left: 0;
   right: 0;
   height: 60px;
+  background-color: #FFFFFF;
   z-index: 2;
-  background-color: #000000;
 }
 
 .TodoList {
   float: left;
-  margin-top: 60px;
   width: 100%;
   height: auto;
+  background-color: #FFFFFF;
   z-index: 1;
   min-height: 200px;
-  background-color: #000000;
 }
 ```
-
-Here is what your app should look like at this moment:
-
-![Second screenshot of ToDo app](http://odux.azurewebsites.net/github/img/tutorials/intro/SecondAppLook.png)
 
 It's starting to look pretty good! It still needs something more, so let's add a background color and adjust the padding and margins of our TextField and Button components.
 
@@ -307,8 +302,8 @@ To accomplish this, let's add the following new styles to app.css:
   left: 0;
   right: 0;
   height: 60px;
+  background-color: #0078D7;
   z-index: 2;
-  background-color: #0078D7; /* Use a better background-color */
 }
 
 .ms-TextField .ms-TextField-field {
@@ -326,18 +321,17 @@ These styles are going to override the default component styling and will help o
 Now let's tweak our list a bit. For our purposes, we really want to just have a title and description with the x and checkmark. Since we don't need the paper clip and flag, let's modify one list item to look like the following:
 
 ```html
-<li class="ms-List-item">
-  <div class="ms-ListItem is-unread">
-    <span class="ms-ListItem-primaryText">Alton Lafferty</span>
-    <span class="ms-ListItem-tertiaryText">Today we discussed the importance of a, b, and c in regards to d.</span>
-    <span class="ms-ListItem-metaText">2:42p</span>
-    <div class="ms-ListItem-selectionTarget js-toggleSelection"></div>
-    <div class="ms-ListItem-actions">
-      <div class="ms-ListItem-action"><i class="ms-Icon ms-Icon--x"></i></div>
-      <div class="ms-ListItem-action"><i class="ms-Icon ms-Icon--check"></i></div>
-    </div>
+<div class="ms-ListItem is-unread is-selectable">
+  <span class="ms-ListItem-primaryText">Alton Lafferty</span>
+  <span class="ms-ListItem-secondaryText">Meeting notes</span>
+  <span class="ms-ListItem-tertiaryText">Today we discussed the importance of a, b, and c in regards to d.</span>
+  <span class="ms-ListItem-metaText">2:42p</span>
+  <div class="ms-ListItem-selectionTarget js-toggleSelection"></div>
+  <div class="ms-ListItem-actions">
+    <div class="ms-ListItem-action"><i class="ms-Icon ms-Icon--x"></i></div>
+    <div class="ms-ListItem-action"><i class="ms-Icon ms-Icon--check"></i></div>            
   </div>
-</li>
+</div>
 ```
 
 Now let's copy this new list item code and paste it at least 10 times inside of `<ul class=”ms-List”></ul>`, making sure to remove the old list item code.
