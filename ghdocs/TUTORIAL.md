@@ -129,7 +129,7 @@ Now let's add styles for these elements. Open up app.css and add two CSS rules: 
   float: left;
   width: 100%;
   height: auto;
-  background-color: #cdcdcd;
+  background-color: #CDCDCD;
   z-index: 1;
   min-height: 200px;
 }
@@ -237,6 +237,7 @@ Go ahead and open up `dist/components/List/List.html` from your extracted Fabric
   <ul class="ms-List">
     <div class="ms-ListItem is-unread is-selectable">
       <span class="ms-ListItem-primaryText">Alton Lafferty</span>
+      <span class="ms-ListItem-secondaryText">Meeting notes</span>
       <span class="ms-ListItem-tertiaryText">Today we discussed the importance of a, b, and c in regards to d.</span>
       <span class="ms-ListItem-metaText">2:42p</span>
       <div class="ms-ListItem-selectionTarget js-toggleSelection"></div>
@@ -249,6 +250,7 @@ Go ahead and open up `dist/components/List/List.html` from your extracted Fabric
     </div>      
     <div class="ms-ListItem is-unread is-selectable">
       <span class="ms-ListItem-primaryText">Alton Lafferty</span>
+      <span class="ms-ListItem-secondaryText">Meeting notes</span>
       <span class="ms-ListItem-tertiaryText">Today we discussed the importance of a, b, and c in regards to d.</span>
       <span class="ms-ListItem-metaText">2:42p</span>
       <div class="ms-ListItem-selectionTarget js-toggleSelection"></div>
