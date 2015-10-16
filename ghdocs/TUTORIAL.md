@@ -235,36 +235,32 @@ Go ahead and open up `dist/components/List/List.html` from your extracted Fabric
 ```html
 <div class="TodoList">
   <ul class="ms-List">
-   <li class="ms-List-item">
-     <div class="ms-ListItem is-unread">
-       <span class="ms-ListItem-primaryText">Alton Lafferty</span>
-       <span class="ms-ListItem-secondaryText">Meeting notes</span>
-       <span class="ms-ListItem-tertiaryText">Today we discussed the importance of a, b, and c in regards to d.</span>
-       <span class="ms-ListItem-metaText">2:42p</span>
-       <div class="ms-ListItem-selectionTarget js-toggleSelection"></div>
-       <div class="ms-ListItem-actions">
-         <div class="ms-ListItem-action"><i class="ms-Icon ms-Icon--attachment"></i></div>
-         <div class="ms-ListItem-action"><i class="ms-Icon ms-Icon--x"></i></div>
-         <div class="ms-ListItem-action"><i class="ms-Icon ms-Icon--flag"></i></div>
-       </div>
-     </div>
-   </li>
-   <li class="ms-List-item">
-     <div class="ms-ListItem is-unread">
-       <span class="ms-ListItem-primaryText">Alton Lafferty</span>
-       <span class="ms-ListItem-secondaryText">Meeting notes</span>
-       <span class="ms-ListItem-tertiaryText">Today we discussed the importance of a, b, and c in regards to d.</span>
-       <span class="ms-ListItem-metaText">2:42p</span>
-       <div class="ms-ListItem-selectionTarget js-toggleSelection"></div>
-       <div class="ms-ListItem-actions">
-         <div class="ms-ListItem-action"><i class="ms-Icon ms-Icon--attachment"></i></div>
-         <div class="ms-ListItem-action"><i class="ms-Icon ms-Icon--x"></i></div>
-         <div class="ms-ListItem-action"><i class="ms-Icon ms-Icon--flag"></i></div>
-       </div>
-     </div>
-   </li>
-  </ul>
-  …
+    <div class="ms-ListItem is-unread is-selectable">
+      <span class="ms-ListItem-primaryText">Alton Lafferty</span>
+      <span class="ms-ListItem-tertiaryText">Today we discussed the importance of a, b, and c in regards to d.</span>
+      <span class="ms-ListItem-metaText">2:42p</span>
+      <div class="ms-ListItem-selectionTarget js-toggleSelection"></div>
+      <div class="ms-ListItem-actions">
+        <div class="ms-ListItem-action"><i class="ms-Icon ms-Icon--mail"></i></div>
+        <div class="ms-ListItem-action"><i class="ms-Icon ms-Icon--trash"></i></div>
+        <div class="ms-ListItem-action"><i class="ms-Icon ms-Icon--flag"></i></div>
+        <div class="ms-ListItem-action"><i class="ms-Icon ms-Icon--pinLeft"></i></div>         
+      </div>
+    </div>      
+    <div class="ms-ListItem is-unread is-selectable">
+      <span class="ms-ListItem-primaryText">Alton Lafferty</span>
+      <span class="ms-ListItem-tertiaryText">Today we discussed the importance of a, b, and c in regards to d.</span>
+      <span class="ms-ListItem-metaText">2:42p</span>
+      <div class="ms-ListItem-selectionTarget js-toggleSelection"></div>
+      <div class="ms-ListItem-actions">
+        <div class="ms-ListItem-action"><i class="ms-Icon ms-Icon--mail"></i></div>
+        <div class="ms-ListItem-action"><i class="ms-Icon ms-Icon--trash"></i></div>
+        <div class="ms-ListItem-action"><i class="ms-Icon ms-Icon--flag"></i></div>
+        <div class="ms-ListItem-action"><i class="ms-Icon ms-Icon--pinLeft"></i></div>                
+      </div>
+    </div>        
+  </ul> 
+  ...     
 </div>
 ```
 
@@ -291,7 +287,7 @@ Now, let's remove the background colors we used to test our two container `<divs
 }
 ```
 
-It's starting to look pretty good! It still needs something more, so let's add a background color and adjust the padding and margins of our TextField and Button components.
+It's starting to look pretty good! It still needs something more, so let's add a background color and adjust the padding and margins of our TextField and Button components. Let's also add some styling to our list items.
 
 To accomplish this, let's add the following new styles to app.css:
 
@@ -310,6 +306,11 @@ To accomplish this, let's add the following new styles to app.css:
   margin-top: 14px;
 }
 
+.ms-ListItem.is-unread {
+  border-bottom: 1px solid #EAEAEA;
+  padding: 10px 28px;
+}
+
 .ms-Button {
   margin-top: 14px;
   width: 100%;
@@ -323,7 +324,6 @@ Now let's tweak our list a bit. For our purposes, we really want to just have a 
 ```html
 <div class="ms-ListItem is-unread is-selectable">
   <span class="ms-ListItem-primaryText">Alton Lafferty</span>
-  <span class="ms-ListItem-secondaryText">Meeting notes</span>
   <span class="ms-ListItem-tertiaryText">Today we discussed the importance of a, b, and c in regards to d.</span>
   <span class="ms-ListItem-metaText">2:42p</span>
   <div class="ms-ListItem-selectionTarget js-toggleSelection"></div>
