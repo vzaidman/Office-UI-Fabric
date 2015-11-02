@@ -6,7 +6,7 @@
    * DatePicker Plugin
    */
 
-  $.fn.DatePicker = function (options) {
+  $.fn.DatePicker = function (options, callback) {
 
     return this.each(function () {
 
@@ -82,6 +82,9 @@
         }
       });
 
+      if(callback){
+        callback($picker);
+      }
     });
   };
 
